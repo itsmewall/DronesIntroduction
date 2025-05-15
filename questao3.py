@@ -97,13 +97,13 @@ params = {
 }
 
 # Força de vento constante
-wind_force_x = 1.0 # eixo x
-wind_force_y = 1.0 # eixo y
+wind_force_x = 1.5 # eixo x
+wind_force_y = 0.0 # eixo y
 
-omega = 2
+omega = 1.5
 speed = omega * np.sqrt(1 / params['K'])
 dspeed = 0.1 * speed
-params['omega1'] = speed #- dspeed
+params['omega1'] = speed - dspeed
 params['omega2'] = speed - dspeed
 params['omega3'] = speed - dspeed
 params['omega4'] = speed - dspeed

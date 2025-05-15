@@ -117,22 +117,16 @@ def eom(t, Z):
     x, y, z, phi, theta, psi, vx, vy, vz, phidot, thetadot, psidot = Z
     Tz = K * (omega1**2 + omega2**2 + omega3**2 + omega4**2)
 
-
-
     A = np.zeros((6, 6))
-
-    A[0, 0] = m
-    A[1, 1] = m
-    A[2, 2] = m
-    A[3, 3] = Ixx
-    A[3, 5] = -Ixx * np.sin(theta)
+    A[0, 0] = m; A[1, 1] = m; A[2, 2] = m
+    A[3, 3] = Ixx; A[3, 5] = -Ixx * np.sin(theta)
     A[4, 4] = Iyy - Iyy * np.sin(phi)**2 + Izz * np.sin(phi)**2
     A[4, 5] = np.cos(phi) * np.cos(theta) * np.sin(phi) * (Iyy - Izz)
     A[5, 3] = -Ixx * np.sin(theta)
     A[5, 4] = np.cos(phi) * np.cos(theta) * np.sin(phi) * (Iyy - Izz)
-    A[5, 5] = (Ixx * np.sin(theta)**2 + 
-            Izz * np.cos(phi)**2 * np.cos(theta)**2 + 
-            Iyy * np.cos(theta)**2 * np.sin(phi)**2)
+    A[5, 5] = (Ixx * np.sin(theta)**2 +
+                Izz * np.cos(phi)**2 * np.cos(theta)**2 +
+                Iyy * np.cos(theta)**2 * np.sin(phi)**2)
 
     # Now the B vector
     B = np.zeros((6, 1))
